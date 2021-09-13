@@ -1,0 +1,199 @@
+﻿
+@page "/Personas"
+
+
+@using BLL
+@using Models
+@using Blazored.Toast
+@using Blazored.Toast.Services
+
+@inject IToastService toast
+
+<EditForm Model="Persona" OnValidSubmit="Guardar">
+    <DataAnnotationsValidator />
+
+    <div class="card" style="align-self:self-start">
+        
+        <div class="card-header">
+            <h3>Registro de Personas</h3>
+            <style type="text/css">
+                label {
+                    width: 200px;
+                    display: inline-block;
+                }
+            </style>
+        </div>
+
+        <div class="card-body" style="align-self:self-start">
+            <form>
+                @*EstudianteId*@
+                <div class="form-row align-items-lg-start">
+                    <div class="col">
+                        <div class="form-inline">
+                            <label><strong>Id</strong></label>
+                            <div class="input-group">
+                                <InputNumber @bind-Value="Persona.PersonaId" class="form-control col-4" />
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-toolbar input-group-text" @onclick="Buscar"><span class="oi oi-magnifying-glass mr-2"></span>Buscar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+
+                @*Nombre*@
+                <div class="form-row align-items-lg-start">
+                    <div class="col">
+                        <div class="form-inline">
+                            <label><strong>Nombres</strong></label>
+                            <div class="input-group">
+                                <InputText @bind-Value="Persona.Nombres" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+
+                @*Telefono*@
+                <div class="form-row align-items-lg-start">
+                    <div class="col">
+                        <div class="form-inline">
+                            <label><strong>Teléfono</strong></label>
+                            <div class="input-group">
+                                <InputText @bind-Value="Persona.Telefono" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+
+                @*Cedula*@
+                <div class="form-row align-items-lg-start">
+                    <div class="col">
+                        <div class="form-inline">
+                            <label><strong>Cédula</strong></label>
+                            <div class="input-group">
+                                <InputText required minlength="11" maxlength="11" @bind-Value="Persona.Cedula" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+
+                @*Dirección*@
+                <div class="form-row align-items-lg-start">
+                    <div class="col">
+                        <div class="form-inline">
+                            <label><strong>Dirección</strong></label>
+                            <div class="input-group">
+                                <InputText @bind-Value="Persona.Direccion" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+
+                @*Fecha Nacimiento*@
+                <div class="form-row align-items-lg-start">
+                    <div class="col">
+                        <div class="form-inline">
+                            <label><strong>Fecha Nacimiento</strong></label>
+                            <div class="input-group">
+                                <InputDate @bind-Value="Persona.FechaNacimiento" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="card-footer" style="align-self:self-start">
+                    <div class="form-group text-center" display: inline-block>
+                        <button type="button" class="btn btn-outline-primary" @onclick="Nuevo"><span class="oi oi-file mr-2"></span>Nuevo</button>
+                        &nbsp;&nbsp;
+                        <button type="button" class="btn btn-outline-primary" @onclick="Guardar"><span class="oi oi-account-login mr-2"></span>Guardar</button>
+                        &nbsp;&nbsp;
+                        <button type="button" class="btn btn-outline-primary" @onclick="Eliminar"><span class="oi oi-trash mr-2"></span>Eliminar</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</EditForm>
+
+
+
+@code {
+    [Parameter]
+    public int PersonaId { get; set; }
+
+    private Personas Persona { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Nuevo();
+        Buscar();
+    }
+
+    public void Nuevo()
+    {
+        Persona = new Personas();
+    }
+
+    public void Buscar()
+    {
+        if (Persona.PersonaId > 0)
+        {
+            var encontrado = PersonasBLL.Buscar(Persona.PersonaId);
+
+            if (encontrado != null)
+                this.Persona = encontrado;
+            else
+            {
+                toast.ShowWarning("No Encontrado");
+            }
+        }
+    }
+
+    public void Guardar()
+    {
+        bool guardo;
+
+        guardo = PersonasBLL.Guardar(Persona);
+
+        if (guardo)
+        {
+            Nuevo();
+            toast.ShowSuccess("Guardado correctamente");
+        }
+        else
+        {
+            toast.ShowError("No se pudo guardar.");
+        }
+    }
+
+    public void Eliminar()
+    {
+        bool elimino;
+
+        elimino = PersonasBLL.Eliminar(Persona.PersonaId);
+
+        if (elimino)
+        {
+            Nuevo();
+            toast.ShowSuccess("Eliminado correctamente");
+        }
+        else
+        {
+            toast.ShowError("No se pudo eliminar.");
+        }
+    }
+}
