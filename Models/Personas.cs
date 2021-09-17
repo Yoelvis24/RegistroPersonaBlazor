@@ -10,7 +10,6 @@ namespace RegistroBlazor.Models
     {
         [Key]
         public int PersonaId { get; set; }
-        public int PrestamoId { get; set; }
         public string Nombres { get; set; }
         public string Telefono { get; set; }
         public string Cedula { get; set; }
@@ -19,12 +18,14 @@ namespace RegistroBlazor.Models
         public Personas()
         {
             PersonaId = 0;
-            PrestamoId = 0;
             Nombres = string.Empty;
             Telefono = string.Empty;
             Cedula = string.Empty;
             Direccion = string.Empty;
             FechaNacimiento = DateTime.Now;
+            Prestamos = new HashSet<Prestamos>();
         }
+
+        public virtual ICollection<Prestamos> Prestamos { get; set; }
     }
 }

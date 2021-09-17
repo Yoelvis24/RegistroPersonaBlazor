@@ -83,35 +83,35 @@ using RegistroBlazor.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\yoelvis\source\repos\RegistroBlazor\Pages\Registros\RPersona.razor"
+#line 3 "C:\Users\yoelvis\source\repos\RegistroBlazor\Pages\Registros\RPrestamos.razor"
 using BLL;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\yoelvis\source\repos\RegistroBlazor\Pages\Registros\RPersona.razor"
+#line 4 "C:\Users\yoelvis\source\repos\RegistroBlazor\Pages\Registros\RPrestamos.razor"
 using Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\yoelvis\source\repos\RegistroBlazor\Pages\Registros\RPersona.razor"
+#line 5 "C:\Users\yoelvis\source\repos\RegistroBlazor\Pages\Registros\RPrestamos.razor"
 using Blazored.Toast;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\yoelvis\source\repos\RegistroBlazor\Pages\Registros\RPersona.razor"
+#line 6 "C:\Users\yoelvis\source\repos\RegistroBlazor\Pages\Registros\RPrestamos.razor"
 using Blazored.Toast.Services;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/Personas")]
-    public partial class RPersona : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/Prestamos")]
+    public partial class RPrestamos : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -119,13 +119,12 @@ using Blazored.Toast.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 147 "C:\Users\yoelvis\source\repos\RegistroBlazor\Pages\Registros\RPersona.razor"
+#line 137 "C:\Users\yoelvis\source\repos\RegistroBlazor\Pages\Registros\RPrestamos.razor"
        
     [Parameter]
-    public int PersonaId { get; set; }
+    public int PrestamoId { get; set; }
 
-    private Personas Persona { get; set; }
-    public double Balance { get; set; }
+    private Prestamos Prestamo { get; set; }
 
     protected override void OnInitialized()
     {
@@ -136,33 +135,21 @@ using Blazored.Toast.Services;
 
     public void Nuevo()
     {
-        Persona = new Personas();
-        Balance = 0;
-        PersonaId = 0;
+        Prestamo = new Prestamos();
     }
-
+    
     public void Buscar()
     {
-        var encontrado = PersonasBLL.Buscar(Persona.PersonaId);
-        var prestamos = PrestamosBLL.GetList(e => e.PersonaId == Persona.PersonaId);
-        if (encontrado != null)
+        if (Prestamo.PrestamoId > 0)
         {
-            this.Persona = encontrado;
-            if (prestamos.Count > 0)
-            {
-                foreach (Prestamos prestamo in prestamos)
-                {
-                    this.Balance += prestamo.Balance;
-                }
-            }
+            var encontrado = PrestamosBLL.Buscar(Prestamo.PrestamoId);
+
+            if (encontrado != null)
+                this.Prestamo = encontrado;
             else
             {
-                this.Balance = 0;
+                toast.ShowWarning("No Encontrado");
             }
-        }
-        else
-        {
-            toast.ShowWarning("Persona no Encontrada");
         }
     }
 
@@ -170,7 +157,7 @@ using Blazored.Toast.Services;
     {
         bool guardo;
 
-        guardo = PersonasBLL.Guardar(Persona);
+        guardo = PrestamosBLL.Guardar(Prestamo);
 
         if (guardo)
         {
@@ -187,7 +174,7 @@ using Blazored.Toast.Services;
     {
         bool elimino;
 
-        elimino = PersonasBLL.Eliminar(Persona.PersonaId);
+        elimino = PrestamosBLL.Eliminar(Prestamo.PrestamoId);
 
         if (elimino)
         {

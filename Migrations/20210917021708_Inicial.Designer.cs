@@ -9,7 +9,7 @@ using RegistroBlazor.DAL;
 namespace RegistroBlazor.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20210917002729_Inicial")]
+    [Migration("20210917021708_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,18 +36,10 @@ namespace RegistroBlazor.Migrations
                     b.Property<string>("Nombres")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("PrestamoId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("PrestamosId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Telefono")
                         .HasColumnType("TEXT");
 
                     b.HasKey("PersonaId");
-
-                    b.HasIndex("PrestamosId");
 
                     b.ToTable("Personas");
                 });
@@ -70,21 +62,30 @@ namespace RegistroBlazor.Migrations
                     b.Property<double>("Monto")
                         .HasColumnType("REAL");
 
+                    b.Property<int>("PersonaId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("PrestamoId");
+
+                    b.HasIndex("PersonaId");
 
                     b.ToTable("Prestamos");
                 });
 
-            modelBuilder.Entity("RegistroBlazor.Models.Personas", b =>
-                {
-                    b.HasOne("RegistroBlazor.Models.Prestamos", null)
-                        .WithMany("PersonaId")
-                        .HasForeignKey("PrestamosId");
-                });
-
             modelBuilder.Entity("RegistroBlazor.Models.Prestamos", b =>
                 {
-                    b.Navigation("PersonaId");
+                    b.HasOne("RegistroBlazor.Models.Personas", "Persona")
+                        .WithMany("Prestamos")
+                        .HasForeignKey("PersonaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Persona");
+                });
+
+            modelBuilder.Entity("RegistroBlazor.Models.Personas", b =>
+                {
+                    b.Navigation("Prestamos");
                 });
 #pragma warning restore 612, 618
         }

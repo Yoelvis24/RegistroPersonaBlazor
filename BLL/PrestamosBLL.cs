@@ -13,6 +13,7 @@ namespace RegistroBlazor.BLL
     {
         public static bool Guardar(Prestamos prestamo)
         {
+            prestamo.Balance = prestamo.Monto;
             if (!Existe(prestamo.PrestamoId))
                 return Insertar(prestamo);
             else

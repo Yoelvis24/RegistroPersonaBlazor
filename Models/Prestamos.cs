@@ -16,7 +16,7 @@ namespace RegistroBlazor.Models
         public string Concepto { get; set; }
         public double Monto { get; set; }
         public double Balance { get; set; }
-        
+        public int PersonaId { get; set; }    
         public Prestamos()
         {
             PrestamoId = 0;           
@@ -24,9 +24,8 @@ namespace RegistroBlazor.Models
             Concepto = string.Empty;
             Monto = 0;
             Balance = 0;
-            PersonaId = new List<Personas>();
+            PersonaId = 0;
         }
-        [ForeignKey("PrestamosId")]
-        public virtual List<Personas> PersonaId { get; set; }
+        public virtual Personas Persona { get; set; }
     }
 }
