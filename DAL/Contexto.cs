@@ -11,8 +11,7 @@ namespace RegistroBlazor.DAL
     public class Contexto : DbContext
     {
         public virtual DbSet<Personas> Personas { get; set; }
-        public Contexto(DbContextOptions<Contexto> options) : base(options) { }
-
+        public virtual DbSet<Prestamos> Prestamos { get; set;}
         public Contexto(){}
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
