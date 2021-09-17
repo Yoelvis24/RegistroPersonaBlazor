@@ -9,24 +9,24 @@ using System.Threading.Tasks;
 
 namespace RegistroBlazor.BLL
 {
-    public class PersonasBLL
+    public class PrestamosBLL
     {
-        public static bool Guardar(Personas persona)
+        public static bool Guardar(Prestamos prestamo)
         {
-            if (!Existe(persona.PersonaId))
-                return Insertar(persona);
+            if (!Existe(prestamo.PrestamoId))
+                return Insertar(prestamo);
             else
-                return Modificar(persona);
+                return Modificar(prestamo);
         }
 
-        public static bool Existe(int id)
+        public static bool Existe(int PrestamoId)
         {
             Contexto contexto = new Contexto();
             bool encontrado = false;
 
             try
             {
-                encontrado = contexto.Personas.Any(p => p.PersonaId == id);
+                encontrado = contexto.Prestamos.Any(p => p.PrestamoId == PrestamoId);
             }
             catch (Exception)
             {
@@ -39,14 +39,14 @@ namespace RegistroBlazor.BLL
 
             return encontrado;
         }
-        public static bool Insertar(Personas persona)
+        public static bool Insertar(Prestamos prestamo)
         {
             Contexto contexto = new Contexto();
             bool paso = false;
 
             try
             {
-                contexto.Personas.Add(persona);
+                contexto.Prestamos.Add(prestamo);
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -61,14 +61,14 @@ namespace RegistroBlazor.BLL
             return paso;
         }
 
-        public static bool Modificar(Personas persona)
+        public static bool Modificar(Prestamos prestamo)
         {
             Contexto contexto = new Contexto();
             bool paso = false;
 
             try
             {
-                contexto.Entry(persona).State = EntityState.Modified;
+                contexto.Entry(prestamo).State = EntityState.Modified;
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -83,17 +83,17 @@ namespace RegistroBlazor.BLL
             return paso;
         }
 
-        public static bool Eliminar(int PersonaId)
+        public static bool Eliminar(int PrestamoId)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
             try
             {
-                var persona = contexto.Personas.Find(PersonaId);
+                var prestamo = contexto.Prestamos.Find(PrestamoId);
 
-                if (persona != null)
+                if (prestamo != null)
                 {
-                    contexto.Personas.Remove(persona);
+                    contexto.Prestamos.Remove(prestamo);
                     paso = contexto.SaveChanges() > 0;
                 }
             }
@@ -109,14 +109,14 @@ namespace RegistroBlazor.BLL
             return paso;
         }
 
-        public static Personas Buscar(int PersonaId)
+        public static Prestamos Buscar(int PrestamoId)
         {
             Contexto contexto = new Contexto();
-            Personas persona;
+            Prestamos prestamo;
 
             try
             {
-                persona = contexto.Personas.Find(PersonaId);
+                prestamo = contexto.Prestamos.Find(PrestamoId);
             }
             catch (Exception)
             {
@@ -127,17 +127,17 @@ namespace RegistroBlazor.BLL
                 contexto.Dispose();
             }
 
-            return persona;
+            return prestamo;
         }
 
-        public static List<Personas> GetList(Expression<Func<Personas, bool>> criterio)
+        public static List<Prestamos> GetList(Expression<Func<Prestamos, bool>> criterio)
         {
-            List<Personas> personaslist = new List<Personas>();
+            List<Prestamos> prestamoslist = new List<Prestamos>();
             Contexto contexto = new Contexto();
 
             try
             {
-                personaslist = contexto.Personas.Where(criterio).AsNoTracking().ToList();
+                prestamoslist = contexto.Prestamos.Where(criterio).AsNoTracking().ToList();
             }
             catch (Exception)
             {
@@ -148,7 +148,7 @@ namespace RegistroBlazor.BLL
                 contexto.Dispose();
             }
 
-            return personaslist;
+            return prestamoslist;
         }
     }
 }

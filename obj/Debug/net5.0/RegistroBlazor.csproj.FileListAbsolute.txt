@@ -83,7 +83,7 @@ C:\Users\yoelvis\source\repos\RegistroBlazor\obj\Debug\net5.0\RegistroBlazor.dll
 C:\Users\yoelvis\source\repos\RegistroBlazor\obj\Debug\net5.0\ref\RegistroBlazor.dll
 C:\Users\yoelvis\source\repos\RegistroBlazor\obj\Debug\net5.0\RegistroBlazor.pdb
 C:\Users\yoelvis\source\repos\RegistroBlazor\obj\Debug\net5.0\RegistroBlazor.genruntimeconfig.cache
-C:\Users\yoelvis\source\repos\RegistroBlazor\bin\Debug\net5.0\ref\RegistroBlazor.dll
 C:\Users\yoelvis\source\repos\RegistroBlazor\bin\Debug\net5.0\Blazored.Toast.dll
 C:\Users\yoelvis\source\repos\RegistroBlazor\obj\Debug\net5.0\RazorDeclaration\Pages\Registros\RPersona.razor.g.cs
 C:\Users\yoelvis\source\repos\RegistroBlazor\obj\Debug\net5.0\Razor\Pages\Registros\RPersona.razor.g.cs
+C:\Users\yoelvis\source\repos\RegistroBlazor\bin\Debug\net5.0\ref\RegistroBlazor.dll
