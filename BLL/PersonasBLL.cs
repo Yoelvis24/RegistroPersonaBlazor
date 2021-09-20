@@ -116,7 +116,7 @@ namespace RegistroBlazor.BLL
 
             try
             {
-                persona = contexto.Personas.Find(PersonaId);
+                persona = contexto.Personas.Where(p => p.PersonaId == PersonaId).FirstOrDefault();
             }
             catch (Exception)
             {

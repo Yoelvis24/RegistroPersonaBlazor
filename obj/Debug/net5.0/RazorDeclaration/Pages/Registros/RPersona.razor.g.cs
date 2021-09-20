@@ -119,7 +119,7 @@ using Blazored.Toast.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 147 "C:\Users\yoelvis\source\repos\RegistroBlazor\Pages\Registros\RPersona.razor"
+#line 152 "C:\Users\yoelvis\source\repos\RegistroBlazor\Pages\Registros\RPersona.razor"
        
     [Parameter]
     public int PersonaId { get; set; }
@@ -143,26 +143,30 @@ using Blazored.Toast.Services;
 
     public void Buscar()
     {
-        var encontrado = PersonasBLL.Buscar(Persona.PersonaId);
-        var prestamos = PrestamosBLL.GetList(e => e.PersonaId == Persona.PersonaId);
-        if (encontrado != null)
+        if (Persona.PersonaId > 0)
         {
-            this.Persona = encontrado;
-            if (prestamos.Count > 0)
+            var encontrado = PersonasBLL.Buscar(Persona.PersonaId);
+            var prestamos = PrestamosBLL.GetList(pres => pres.PersonaId == Persona.PersonaId);
+            if (encontrado != null)
             {
-                foreach (Prestamos prestamo in prestamos)
+                this.Persona = encontrado;
+                if (prestamos.Count > 0)
                 {
-                    this.Balance += prestamo.Balance;
+                    Balance = 0;
+                    foreach (Prestamos prestamo in prestamos)
+                    {
+                        this.Balance += prestamo.Balance;
+                    }
+                }
+                else
+                {
+                    this.Balance = 0;
                 }
             }
             else
             {
-                this.Balance = 0;
+                toast.ShowWarning("Préstamo no Encontrado");
             }
-        }
-        else
-        {
-            toast.ShowWarning("Persona no Encontrada");
         }
     }
 

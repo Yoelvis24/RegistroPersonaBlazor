@@ -138,7 +138,7 @@ namespace RegistroBlazor.BLL
 
             try
             {
-                prestamoslist = contexto.Prestamos.Where(criterio).AsNoTracking().ToList();
+                prestamoslist = contexto.Prestamos.Where(criterio).ToList();
             }
             catch (Exception)
             {

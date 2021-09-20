@@ -119,7 +119,7 @@ using Blazored.Toast.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 137 "C:\Users\yoelvis\source\repos\RegistroBlazor\Pages\Registros\RPrestamos.razor"
+#line 141 "C:\Users\yoelvis\source\repos\RegistroBlazor\Pages\Registros\RPrestamos.razor"
        
     [Parameter]
     public int PrestamoId { get; set; }

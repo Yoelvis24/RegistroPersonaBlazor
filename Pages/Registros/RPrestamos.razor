@@ -10,125 +10,129 @@
 <EditForm Model="Prestamo" OnValidSubmit="Guardar">
     <DataAnnotationsValidator />
 
-    <div class="card" style="align-self:self-start">
+    <div class="card" style="align-self:center">
 
-        <div class="card-header">
-            <h3>Registro de Personas</h3>
-            <style type="text/css">
-                label {
-                    width: 200px;
-                    display: inline-block;
-                }
-            </style>
+        <div class="card-header" style="background-color: #79CAFF; text-align: center">
+            <h3>Registro de Préstamos</h3>
         </div>
 
-        <div class="card-body" style="align-self:self-start">
-            <form>
-                @*PrestamosId*@
-                <div class="form-row align-items-lg-start">
-                    <div class="col">
-                        <div class="form-inline">
-                            <label><strong>Id</strong></label>
-                            <div class="input-group">
-                                <InputNumber @bind-Value="Prestamo.PrestamoId" class="form-control col-4" />
-                                <div class="input-group-append">
-                                    <button type="button" class="btn btn-toolbar input-group-text" @onclick="Buscar"><span class="oi oi-magnifying-glass mr-2"></span>Buscar</button>
+        <div class="card-body">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <form>
+                        @*PrestamosId*@
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-inline">
+                                    <label><strong>Id</strong></label>
+                                    <hr />
+                                    <div class="input-group">
+                                        <InputNumber @bind-Value="Prestamo.PrestamoId" class="form-control" size=40 style="width:300px" />
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-toolbar input-group-text" @onclick="Buscar"><span class="oi oi-magnifying-glass mr-2"></span>Buscar</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <br />
+                        <br />
 
-                @*PersonaId*@
-                <div class="form-row align-items-lg-start">
-                    <div class="col">
-                        <div class="form-inline">
-                            <label><strong>Persona</strong></label>
-                            <div class="input-group">
-                                <InputSelect @bind-Value="Prestamo.PersonaId" class="form-control col-4">
-                                 <option value="0">Selecciona una persona</option>
+                        @*PersonaId*@
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-inline">
+                                    <label><strong>Persona</strong></label>
+                                    <hr />
+                                    <div class="input-group">
+                                        <InputSelect @bind-Value="Prestamo.PersonaId" class="form-control"  size=1 style="width:400px">
+                                            <option value="0">Selecciona una persona</option>
 
-                                    @foreach (var persona in PersonasBLL.GetList(per => true))
-                                    {
-                                        <option value="@persona.PersonaId">@persona.Cedula >>> @persona.Nombres</option>
-                                    }
-                                </InputSelect>
+                                            @foreach (var persona in PersonasBLL.GetList(per => true))
+                                            {
+                                                <option value="@persona.PersonaId">(@persona.PersonaId) = @persona.Nombres</option>
+                                            }
+                                        </InputSelect>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <br />
+                        <br />
 
-                @*Concepto*@
-                <div class="form-row align-items-lg-start">
-                    <div class="col">
-                        <div class="form-inline">
-                            <label><strong>Concepto</strong></label>
-                            <div class="input-group">
-                                <InputTextArea @bind-Value="Prestamo.Concepto" class="form-control" />
+                        @*Concepto*@
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-inline">
+                                    <label><strong>Concepto</strong></label>
+                                    <hr />
+                                    <div class="input-group">
+                                        <InputTextArea @bind-Value="Prestamo.Concepto" class="form-control"  size=40 style="width:400px" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <br />
+                        <br />
 
-                @*Monto*@
-                <div class="form-row align-items-lg-start">
-                    <div class="col">
-                        <div class="form-inline">
-                            <label><strong>Monto</strong></label>
-                            <div class="input-group">
-                                <InputNumber @bind-Value="Prestamo.Monto" class="form-control" />
+                        @*Monto*@
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-inline">
+                                    <label><strong>Monto</strong></label>
+                                    <hr />
+                                    <div class="input-group">
+                                        <InputNumber @bind-Value="Prestamo.Monto" class="form-control"  size=40 style="width:400px"/>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <br />
+                        <br />
 
-                @*Balance*@
-                <div class="form-row align-items-lg-start">
-                    <div class="col">
-                        <div class="form-inline">
-                            <label><strong>Balance</strong></label>
-                            <div class="input-group">
-                                <InputNumber readonly @bind-Value="Prestamo.Balance" class="form-control" />
+                        @*Balance*@
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-inline">
+                                    <label><strong>Balance</strong></label>
+                                    <hr />
+                                    <div class="input-group">
+                                        <InputNumber readonly @bind-Value="Prestamo.Balance" class="form-control" size=40 style="width:400px" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <br />
+                        <br />
 
-                @*Fecha*@
-                <div class="form-row align-items-lg-start">
-                    <div class="col">
-                        <div class="form-inline">
-                            <label><strong>Fecha</strong></label>
-                            <div class="input-group">
-                                <InputDate @bind-Value="Prestamo.Fecha" class="form-control" />
+                        @*Fecha*@
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-inline">
+                                    <label><strong>Fecha</strong></label>
+                                    <hr />
+                                    <div class="input-group">
+                                        <InputDate @bind-Value="Prestamo.Fecha" class="form-control"  size=40 style="width:400px" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+
+                        <br />
+
+                        <div class="card-footer" style="text-align:center">
+                            <div class="form-group text-center" display: inline-block>
+                                <button type="button" class="btn btn-outline-primary" @onclick="Nuevo"><span class="oi oi-file mr-2"></span>Nuevo</button>
+                                &nbsp;&nbsp;
+                                <button type="button" class="btn btn-outline-primary" @onclick="Guardar"><span class="oi oi-account-login mr-2"></span>Guardar</button>
+                                &nbsp;&nbsp;
+                                <button type="button" class="btn btn-outline-primary" @onclick="Eliminar"><span class="oi oi-trash mr-2"></span>Eliminar</button>
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
-
-                <br />
-
-                <div class="card-footer" style="align-self:self-start">
-                    <div class="form-group text-center" display: inline-block>
-                        <button type="button" class="btn btn-outline-primary" @onclick="Nuevo"><span class="oi oi-file mr-2"></span>Nuevo</button>
-                        &nbsp;&nbsp;
-                        <button type="button" class="btn btn-outline-primary" @onclick="Guardar"><span class="oi oi-account-login mr-2"></span>Guardar</button>
-                        &nbsp;&nbsp;
-                        <button type="button" class="btn btn-outline-primary" @onclick="Eliminar"><span class="oi oi-trash mr-2"></span>Eliminar</button>
-                    </div>
-                </div>
-
-            </form>
+            </div>
         </div>
     </div>
 </EditForm>
