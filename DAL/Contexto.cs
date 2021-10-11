@@ -10,8 +10,10 @@ namespace RegistroBlazor.DAL
 {
     public class Contexto : DbContext
     {
-        public virtual DbSet<Personas> Personas { get; set; }
-        public virtual DbSet<Prestamos> Prestamos { get; set;}
+        public DbSet<Personas> Personas { get; set; }
+        public DbSet<Prestamos> Prestamos { get; set;}
+        public DbSet<Moras> Moras { get; set; }
+        public DbSet<MorasDetalle> MorasDetalle { get; set; }
         public Contexto(DbContextOptions<Contexto> options) : base(options) { }
         public Contexto(){}
         
