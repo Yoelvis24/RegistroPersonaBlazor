@@ -180,3 +180,5 @@ C:\Users\yoelvis\source\repos\Yoelvis24\RegistroDetalleBlazor\RegistroBlazor\obj
 C:\Users\yoelvis\source\repos\Yoelvis24\RegistroDetalleBlazor\RegistroBlazor\obj\Debug\net5.0\ref\RegistroBlazor.dll
 C:\Users\yoelvis\source\repos\Yoelvis24\RegistroDetalleBlazor\RegistroBlazor\obj\Debug\net5.0\RegistroBlazor.pdb
 C:\Users\yoelvis\source\repos\Yoelvis24\RegistroDetalleBlazor\RegistroBlazor\obj\Debug\net5.0\RegistroBlazor.genruntimeconfig.cache
+C:\Users\yoelvis\source\repos\Yoelvis24\RegistroDetalleBlazor\RegistroBlazor\obj\Debug\net5.0\RazorDeclaration\Pages\Registros\RMoras.razor.g.cs
+C:\Users\yoelvis\source\repos\Yoelvis24\RegistroDetalleBlazor\RegistroBlazor\obj\Debug\net5.0\Razor\Pages\Registros\RMoras.razor.g.cs

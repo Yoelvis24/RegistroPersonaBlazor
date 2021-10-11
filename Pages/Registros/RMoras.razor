@@ -9,12 +9,12 @@
 
 <EditForm Model="Mora" OnValidSubmit="Guardar">
     <DataAnnotationsValidator />
-    <div class="card p-0 bg-light col-4 col-sm-4 col-md-4 col-lg-4 col-xl-5">
+    <div class="card" style="align-self:self-start">
         <div class="card-header text-center">
-            <div class="card-header">
+            <div class="card-header" style="background-color: #79CAFF; text-align: center">
                 <h3>Registro de Moras</h3>
             </div>
-            <div class="card-body d-flex flex-column flex-sm-column flex-md-row flex-xl-row flex-lg-row justify-content-around">
+            <div class="card-body" style="align-self:self-start">
                 <form>
                     @*MoraId*@
                     <div class="form-row align-items-lg-start">
@@ -78,6 +78,7 @@
                                 <button type="button" class="btn btn-toolbar input-group-text" @onclick="Agregar"><span class="oi oi-plus"></span>Agregar</button>
                             </div>
                         </div>
+
 
                         <div class="col mt-2">
                             <table class="table table-bordered border-dark">

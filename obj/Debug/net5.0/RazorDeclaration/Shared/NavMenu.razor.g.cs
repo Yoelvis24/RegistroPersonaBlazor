@@ -90,7 +90,7 @@ using RegistroBlazor.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "C:\Users\yoelvis\source\repos\Yoelvis24\RegistroDetalleBlazor\RegistroBlazor\Shared\NavMenu.razor"
+#line 33 "C:\Users\yoelvis\source\repos\Yoelvis24\RegistroDetalleBlazor\RegistroBlazor\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 
