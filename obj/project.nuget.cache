@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YvWfcryD0LBc/+hAc9/C9uI8yjQng9mpPETSHakBl+/hqwjo/KaLcz50FgwYUeRVwFv3/1oBLvsVkSDDKbPobw==",
+  "dgSpecHash": "z3rKE+rRrb2glnA+v2Sn9sFEblX/9ua+vdH+lTe3r7SjnIC+u2a8PUQ6QJ/tUg2/b45ekMhd+rfQB/1JY1lyLw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yoelvis\\source\\repos\\RegistroBlazor\\RegistroBlazor.csproj",
+  "projectFilePath": "C:\\Users\\yoelvis\\source\\repos\\Yoelvis24\\RegistroDetalleBlazor\\RegistroBlazor\\RegistroBlazor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yoelvis\\.nuget\\packages\\blazored.toast\\3.1.2\\blazored.toast.3.1.2.nupkg.sha512",
     "C:\\Users\\yoelvis\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
